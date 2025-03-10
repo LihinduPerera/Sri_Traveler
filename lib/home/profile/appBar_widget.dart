@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 AppBar buildAppBar(BuildContext context) {
   //final icon = ico.edit;
@@ -8,8 +9,11 @@ AppBar buildAppBar(BuildContext context) {
     leading: BackButton(),
     actions: [
       IconButton(
-        onPressed: () {},
-        icon: Icon(Icons.dark_mode_rounded),
+        onPressed: () {
+          FirebaseAuth.instance.signOut();
+          Navigator.pushNamed(context, "/login");
+        },
+        icon: Icon(Icons.logout_outlined),
       ),
     ],
   );
